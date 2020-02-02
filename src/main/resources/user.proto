@@ -1,0 +1,25 @@
+syntax = "proto3";
+option java_package = "com.user.grpc";
+
+service user{
+	rpc login(stream MultipleLoginRequests) returns (stream MultipleAPIResponse);
+}
+
+
+message LoginRequest{
+	string username = 1;
+	string password = 2;
+}
+
+message APIResponse{
+	string responsemessage = 1;
+	int32 responsecode = 2;
+}
+
+message MultipleLoginRequests{
+	LoginRequest requests = 1;
+}
+
+message MultipleAPIResponse{
+	string response = 1;
+}
